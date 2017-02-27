@@ -1,29 +1,36 @@
 import React, { PropTypes as PT } from 'react';
 import { connect } from 'react-redux';
-import { RadialBarChart, RadialBar, Legend, Tooltip } from 'recharts';
+// import { RadialBarChart, RadialBar, Legend, Tooltip } from 'recharts';
+// import Chart from 'react-c3';
+import Reaccct from 'reaccct';
 
 const OnTime = (props) => {
   return (
-    <RadialBarChart
-      width={props.width}
-      height={props.height}
-      innerRadius="60%"
-      outerRadius="80%"
-      data={props.data}
-      >
-      <RadialBar
-        data={props.data}
-        startAngle={180}
-        endAngle={0}
-        fill="#000"
-        label
-        background
-        clockWise={true}
-        dataKey="value"
-      />
-      <Legend iconSize={10} width={120} layout="vertical" verticalAlign="bottom" align="center" />
-      <Tooltip />
-    </RadialBarChart>
+    <div className="ontime-guage">
+      <Reaccct data={props.data} options={{
+        guage: {
+          label: {
+            format: (value, ratio) => {
+              return value;
+            },
+            show: false
+          },
+          min: 0,
+          max: 100,
+          units: ' %',
+          width: 39
+        },
+        color: {
+          pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
+          threshold: {
+              values: [30, 60, 90, 100]
+          }
+        },
+        size: {
+          height: 180
+        }
+      }} />
+    </div>
   );
 };
 
@@ -36,12 +43,12 @@ OnTime.propTypes = {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    data: [
-      {
-        name: "On Time",
-        value: state.ontime
-      }
-    ]
+    data: {
+      type: 'gauge',
+      columns: [
+        [ "On Time", state.ontime ]
+      ]
+    }
   };
 };
 
