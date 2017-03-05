@@ -32,11 +32,12 @@ const mapStateToProps = (state) => {
   console.log(state);
 
   var x = [ 'x' ];
-  // var orders = [ 'Orders' ];
   var ontime = [ 'On Time' ];
+  var y2Max = 0;
 
   Object.keys(state.year).forEach((k) => {
     x.push(moment(state.year[k].date).format('YYYY-MM-DD'));
+    y2Max = y2Max > state.year[k].orders ? y2Max : state.year[k].orders;
     // orders.push(state.year[k].orders);
     ontime.push(state.year[k].percent);
   });
@@ -46,15 +47,10 @@ const mapStateToProps = (state) => {
       x: 'x',
       columns: [
         x,
-       // orders,
         ontime
       ],
       types: {
         'On Time': 'area-spline'
-      },
-      axis: {
-        'On Time':'y' //,
-       // 'Orders': 'y2'
       }
     }
   };

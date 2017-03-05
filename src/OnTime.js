@@ -17,8 +17,7 @@ const OnTime = (props) => {
           },
           min: 0,
           max: 100,
-          units: ' %',
-          width: 39
+          units: ' %'
         },
         color: {
           pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
