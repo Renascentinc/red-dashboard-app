@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import './normalize.css';
 import './c3.css';
+import './skeleton.css';
 import './index.css';
 
 import thunk from 'redux-thunk';

@@ -11,11 +11,23 @@ import JobsOutstanding from './JobsOutstanding';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-      	<JobsOutstanding width={400} height={400} />
-      	<BoxesAvailable width={400} height={400} />
-        <OnTimeYear width={400} height={400} />
-        <OnTime width={400} height={200} />
+      <div className="App container">
+      	<div className="row">
+      		<div className="one-half column">
+      			<OnTime width={400} height={200} />
+      		</div>
+      		<div className="one-half column">
+	      		<JobsOutstanding width={400} height={400} />
+	      	</div>
+	    </div>
+	    <div className="row">
+      		<div className="one-half column">
+    	  		<BoxesAvailable width={400} height={400} />
+    	  	</div>
+      		<div className="one-half column">
+        		<OnTimeYear width={400} height={400} />
+        	</div>
+        </div>
       </div>
     );
   }
