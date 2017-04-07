@@ -9,25 +9,44 @@ export const ONTIME_UPDATE = 'ONTIME_UPDATE';
 
 export const updateAll = () => {
   return (dispatch) => {
-    fetch('/json')
-      .then((response) => {
-        if (response.status >= 400) {
-          throw new Error("Bad response from server")
+    var httpRequest = new XMLHttpRequest();
+
+    httpRequest.onreadystatechange = function () {
+      if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (httpRequest.status === 200) {
+          dispatch({
+            type: ALL_UPDATE,
+            data: JSON.parse(httpRequest.responseText)
+          })
         }
-        return response.json();
-      })
-      .then((data) => {
-        dispatch({
-          type: ALL_UPDATE,
-          data
-        });
-      });
+      }
+    }
+
+    httpRequest.open('GET', '/data');
+    httpRequest.send();
+
+
+
+
+    // fetch('/data')
+    //   .then((response) => {
+    //     if (response.status >= 400) {
+    //       throw new Error("Bad response from server")
+    //     }
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     dispatch({
+    //       type: ALL_UPDATE,
+    //       data
+    //     });
+    //   });
   };
 };
 
 export const updateJobs = () => {
   return (dispatch) => {
-    fetch('/json/jobs')
+    fetch('/data/jobs')
       .then((response) => {
         if (response.status >= 400) {
           throw new Error("Bad response from server")
@@ -45,7 +64,7 @@ export const updateJobs = () => {
 
 export const updateBoxes = () => {
   return (dispatch) => {
-    fetch('/json/boxes')
+    fetch('/data/boxes')
       .then((response) => {
         if (response.status >= 400) {
           throw new Error("Bad response from server")
@@ -63,7 +82,7 @@ export const updateBoxes = () => {
 
 export const updateYear = () => {
   return (dispatch) => {
-    fetch('/json/year')
+    fetch('/data/year')
       .then((response) => {
         if (response.status >= 400) {
           throw new Error("Bad response from server")
@@ -81,7 +100,7 @@ export const updateYear = () => {
 
 export const updateOntime = () => {
   return (dispatch) => {
-    fetch('/json/ontime')
+    fetch('/data/ontime')
       .then((response) => {
         if (response.status >= 400) {
           throw new Error("Bad response from server")

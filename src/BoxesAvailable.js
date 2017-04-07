@@ -4,19 +4,21 @@ import { connect } from 'react-redux';
 // import Chart from 'react-c3';
 import Reaccct from 'reaccct';
 
+const options = {
+  bar: {
+    width: "40px"
+  },
+  axis: {
+    x: {
+      type: 'category'
+    }
+  }
+};
+
 const BoxesAvailable = (props) => {
   return (
     <div className="box-availability-chart">
-      <Reaccct data={props.data} options={{
-        bar: {
-          width: "40px"
-        },
-        axis: {
-          x: {
-            type: 'category'
-          }
-        }
-      }} />
+      <Reaccct data={props.data} options={options} />
     </div>
   );
 };
@@ -28,8 +30,6 @@ BoxesAvailable.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
-
   var x = ['x'];
   var boxes = ['Boxes'];
 
@@ -37,7 +37,6 @@ const mapStateToProps = (state) => {
   keys.sort();
   keys.forEach((key) => {
     x.push(key);
-    console.log(typeof key);
     boxes.push(''+state.boxes[key]);
   });
 

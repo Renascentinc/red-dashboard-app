@@ -4,19 +4,21 @@ import { connect } from 'react-redux';
 // import Chart from 'react-c3';
 import Reaccct from 'reaccct';
 
+const options = {
+  bar: {
+    width: "40px"
+  },
+  axis: {
+    x: {
+      type: 'category'
+    }
+  }
+};
+
 const JobsOutstanding = (props) => {
   return (
     <div className="jobs-outstanding-chart">
-      <Reaccct data={props.data} options={{
-        bar: {
-          width: "40px"
-        },
-        axis: {
-          x: {
-            type: 'category'
-          }
-        }
-      }} />
+      <Reaccct data={props.data} options={options} />
     </div>
   );
 };
@@ -28,8 +30,6 @@ JobsOutstanding.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
-
   var x = ['x'];
   var jobs = ['Jobs'];
 

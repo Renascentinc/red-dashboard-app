@@ -5,19 +5,21 @@ import moment from 'moment';
 // import Chart from 'react-c3';
 import Reaccct from 'reaccct';
 
+const options = {
+  axis: {
+    x: {
+      type: 'timeseries',
+      tick: {
+        format: '%Y-%m-%d'
+      }
+    }
+  }
+};
+
 const OnTimeYear = (props) => {
   return (
     <div className="ontime-history">
-      <Reaccct data={props.data} type="timeseries" options={{
-        axis: {
-          x: {
-            type: 'timeseries',
-            tick: {
-              format: '%Y-%m-%d'
-            }
-          }
-        }
-      }} />
+      <Reaccct data={props.data} type="timeseries" options={options} />
     </div>
   );
 };
@@ -29,8 +31,6 @@ OnTimeYear.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
-
   var x = [ 'x' ];
   var ontime = [ 'On Time' ];
   var y2Max = 0;

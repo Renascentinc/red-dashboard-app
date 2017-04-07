@@ -22,7 +22,13 @@ const store = createStore(
   enhancer
 );
 
-store.dispatch(updateAll())
+var update = function() {
+  store.dispatch(updateAll());
+  setTimeout(update, 60000);
+}
+
+// store.dispatch(updateAll())
+update();
 
 ReactDOM.render(
   <Provider store={store}><App /></Provider>,
