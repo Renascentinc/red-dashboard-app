@@ -14,17 +14,21 @@ class App extends Component {
       <div className="App container">
       	<div className="row">
       		<div className="one-half column">
+						<h2>On Time Percentage (two weeks)</h2>
       			<OnTime width={400} height={200} />
       		</div>
       		<div className="one-half column">
+						<h2>Jobs Outstanding</h2>
 	      		<JobsOutstanding width={400} height={400} />
 	      	</div>
 	    </div>
 	    <div className="row">
       		<div className="one-half column">
+						<h2>Boxes Available</h2>
     	  		<BoxesAvailable width={400} height={400} />
     	  	</div>
       		<div className="one-half column">
+						<h2>On Time Percentage (one year)</h2>
         		<OnTimeYear width={400} height={400} />
         	</div>
         </div>
