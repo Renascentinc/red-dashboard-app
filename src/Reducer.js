@@ -5,7 +5,8 @@ import {
   JOBS_UPDATE,
   BOXES_UPDATE,
   YEAR_UPDATE,
-  ONTIME_UPDATE
+  ONTIME_UPDATE,
+  UPDATE_DATA
 } from './Actions';
 
 const jobs = (state={}, action) => {
@@ -52,9 +53,20 @@ const ontime = (state=0, action) => {
   }
 }
 
+const data = (state={}, action) => {
+  switch (action.type) {
+    case UPDATE_DATA:
+      return Object.assign({}, state, action.data);
+
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   jobs,
   boxes,
   year,
-  ontime
+  ontime,
+  data
 });

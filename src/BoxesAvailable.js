@@ -11,6 +11,12 @@ const options = {
   axis: {
     x: {
       type: 'category'
+    },
+    rotated: true
+  },
+  grid: {
+    y: {
+      show: true
     }
   }
 };

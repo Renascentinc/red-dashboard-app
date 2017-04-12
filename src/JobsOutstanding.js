@@ -12,6 +12,11 @@ const options = {
     x: {
       type: 'category'
     }
+  },
+  grid: {
+    y: {
+      show: true
+    }
   }
 };
 

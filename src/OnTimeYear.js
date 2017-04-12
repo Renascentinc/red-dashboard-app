@@ -5,18 +5,23 @@ import moment from 'moment';
 // import Chart from 'react-c3';
 import Reaccct from 'reaccct';
 
-const options = {
-  axis: {
-    x: {
-      type: 'timeseries',
-      tick: {
-        format: '%Y-%m-%d'
+const OnTimeYear = (props) => {
+  const options = {
+    axis: {
+      x: {
+        type: 'timeseries',
+        tick: {
+          // culling: true,
+          format: '%Y-%m-%d',
+          rotate: 60
+        }
       }
     }
-  }
-};
+  };
 
-const OnTimeYear = (props) => {
+  // if (props.windowWidth < 1000) {
+  //   options.axis.x.tick.culling = { max: 5 };
+  // }
   return (
     <div className="ontime-history">
       <Reaccct data={props.data} type="timeseries" options={options} />
@@ -52,7 +57,8 @@ const mapStateToProps = (state) => {
       types: {
         'On Time': 'area-spline'
       }
-    }
+    },
+    windowWidth: state.data.size
   };
 };
 

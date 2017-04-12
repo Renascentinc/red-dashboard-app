@@ -10,7 +10,10 @@ import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './Reducer';
-import { updateAll } from './Actions';
+import {
+  updateAll,
+  updateSize
+} from './Actions';
 
 const enhancer = compose(
   applyMiddleware(thunk),
@@ -26,6 +29,10 @@ var update = function() {
   store.dispatch(updateAll());
   setTimeout(update, 60000);
 }
+
+window.addEventListener('resize', () => {
+  store.dispatch(updateSize());
+})
 
 // store.dispatch(updateAll())
 update();

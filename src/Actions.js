@@ -6,6 +6,7 @@ export const JOBS_UPDATE = 'JOBS_UPDATE';
 export const BOXES_UPDATE = 'BOXES_UPDATE';
 export const YEAR_UPDATE = 'YEAR_UPDATE';
 export const ONTIME_UPDATE = 'ONTIME_UPDATE';
+export const UPDATE_DATA = 'UPDATE_DATA';
 
 export const updateAll = () => {
   return (dispatch) => {
@@ -114,4 +115,13 @@ export const updateOntime = () => {
         });
       });
   };
+};
+
+export const updateSize = () => {
+  return {
+    type: UPDATE_DATA,
+    data: {
+      size: window.innerWidth
+    }
+  }
 };
